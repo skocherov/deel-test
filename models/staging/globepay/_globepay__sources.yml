@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: globepay
+    description: Globepay Data about card transactions and chargebacks
+    schema: globepay
+    tables:
+      - name: raw_acceptance_report
+        description: Globepay card acceptance report (one row per payment attempt)
+
+      - name: raw_chargeback_report
+        description: Globepay chargeback report (one row per transaction and if it is charged back)

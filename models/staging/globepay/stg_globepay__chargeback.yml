@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_globepay__chargeback
+    description: Globepay chargeback report (one row per transaction and if it is charged back)
+    columns:
+      - name: external_ref
+        description: Transaction ID, used to join to acceptance.
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_globepay__acceptance')
+                field: external_ref
+      - name: status
+        description: ''
+      - name: source
+        description: Source system of the record.
+      - name: is_chargeback
+        description: Whether the transaction was charged back.
+        data_tests:
+          - not_null

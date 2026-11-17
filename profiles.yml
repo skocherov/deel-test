@@ -1,0 +1,9 @@
+deel_test:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: deel_test.duckdb
+      threads: 1
+      settings:
+        TimeZone: UTC

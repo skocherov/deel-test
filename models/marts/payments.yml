@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: payments
+    description: One row per Globepay payment attempt, with chargeback info joined on. Main table for payment analysis.
+    columns:
+      - name: external_ref
+        description: Transaction ID.
+        data_tests:
+          - unique
+          - not_null
+      - name: status
+        description: ''
+      - name: source
+        description: Source system of the record.
+      - name: ref
+        description: ''
+      - name: transacted_at
+        description: Transaction time in UTC.
+        data_tests:
+          - not_null
+      - name: transaction_date
+        description: Transaction date in UTC.
+        data_tests:
+          - not_null
+      - name: state
+        description: Payment outcome, accepted or declined.
+        data_tests:
+          - not_null
+      - name: is_accepted
+        description: Whether the payment was accepted.
+        data_tests:
+          - not_null
+      - name: is_cvv_provided
+        description: Whether the CVV was provided.
+      - name: amount
+        description: Amount in local currency.
+      - name: country
+        description: Two-letter country code.
+      - name: currency
+        description: Three-letter currency code.
+      - name: fx_rate_to_usd
+        description: Local currency units per 1 USD at transaction time.
+      - name: amount_usd
+        description: Amount in USD.
+        data_tests:
+          - not_null
+      - name: is_chargeback
+        description: Whether the transaction was charged back. NULL when there is no chargeback data.
+      - name: has_chargeback_data
+        description: Whether the transaction has a record in the chargeback report.
+        data_tests:
+          - not_null

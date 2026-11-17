@@ -1,0 +1,4 @@
+- install uv (https://docs.astral.sh/uv/getting-started/installation/)
+- uv sync
+- uv run python ingestion/load_globepay.py 
+- uv run dbt build
